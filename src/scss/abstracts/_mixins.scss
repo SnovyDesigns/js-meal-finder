@@ -1,0 +1,118 @@
+$unit: rem !default;
+
+// Item size
+@mixin size($width, $height: $width) {
+  @if unitless($width) {
+    $width: $width + $unit;
+  }
+  @if unitless($height) {
+    $height: $height + $unit;
+  }
+  width: $width;
+  height: $height;
+}
+
+// Transition
+@mixin trans($speed: 0.35, $props: all, $easing: ease-in) {
+  transition: $props #{$speed}s $easing;
+}
+
+// Border radius & border
+@mixin brr($radius: 0.5, $border...) {
+  @if unitless($radius) {
+    $radius: $radius + $unit;
+  }
+
+  border-radius: $radius;
+
+  @if length($border) == 1 {
+    border: #{$border}$unit solid #000;
+  } @else if length($border) == 2 {
+    border: #{nth($border, 1)}$unit nth($border, 2) #000;
+  } @else if length($border) == 3 {
+    border: #{nth($border, 1)}$unit nth($border, 2) nth($border, 3);
+  }
+}
+
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number
+    {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+  position: $position;
+}
+
+// Positioning helpers
+@mixin absolute($args: '') {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+  @include position(relative, $args);
+}
+
+// Generate li items
+@mixin list($list) {
+  @each $item in $list {
+    li.#{$item} {
+      background-image: url(images/#{$item}-icon.svg);
+    }
+  }
+}
+
+// Generate li items
+@mixin center {
+  justify-content: center;
+  align-items: center;
+}
+
+// Justify-self & align-self
+@mixin ja-self($justify-pos, $align-pos: $justify-pos) {
+  justify-self: $justify-pos;
+  align-self: $align-pos;
+}
+
+// Justify-content & align-content
+@mixin ja-content($justify-pos, $align-pos: $justify-pos) {
+  justify-content: $justify-pos;
+  align-content: $align-pos;
+}
+
+// Minimum width
+@mixin min-w($width) {
+  @if unitless($width) {
+    $width: $width + $unit;
+  }
+  min-width: $width;
+}
+
+// Maximum width
+@mixin max-w($width) {
+  @if unitless($width) {
+    $width: $width + $unit;
+  }
+  max-width: $width;
+}
+
+// Minimum height
+@mixin min-h($height) {
+  @if unitless($height) {
+    $height: $height + $unit;
+  }
+  min-height: $height;
+}
+
+// Maximum height
+@mixin max-h($height) {
+  @if unitless($height) {
+    $height: $height + $unit;
+  }
+  max-height: $height;
+}

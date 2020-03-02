@@ -1,0 +1,5 @@
+@function iurl($name) {
+  $imagesPath: '../img/' !default;
+
+  @return url(#{$imagesPath}#{$name});
+}

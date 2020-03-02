@@ -1,0 +1,108 @@
+//
+//  MEDIA QUERIES
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// A map of breakpoints - for media-queries 1em = 16px - it always comes from browser styles
+$breakpoints: (
+  // ~ 600px
+    sm: 37.5em,
+  // ~ 900px
+    md: 56.25em,
+  // ~ 1200px
+    lg: 75em,
+  // ~ 1800px
+    xl: 112.5em
+);
+
+//
+//  RESPOND ABOVE
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-above(sm) {}
+@mixin respond-above($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media only screen and (min-width: $breakpoint-value) {
+      @content;
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Write custom breakpoint value
+    @media only screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+//
+//  RESPOND BELOW
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-below(sm) {}
+@mixin respond-below($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media only screen and (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Write custom breakpoint value
+    @media only screen and (max-width: ($breakpoint)) {
+      @content;
+    }
+  }
+}
+
+//
+//  RESPOND BETWEEN
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-between(sm, md) {}
+@mixin respond-between($lower, $upper) {
+  // If both the lower and upper breakpoints exist in the map.
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    // Get the lower and upper breakpoints.
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+
+    // Write the media query.
+    @media only screen and (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+
+    // If one or both of the breakpoints don't exist.
+  } @else {
+    @media only screen and (min-width: $lower) and (max-width: ($upper)) {
+      @content;
+    }
+  }
+}
+
+// HEIGHT MQ
+
+@mixin height-respond-below($breakpoint) {
+  @media (max-height: ($breakpoint)) {
+    @content;
+  }
+}
+@mixin height-respond-above($breakpoint) {
+  @media (min-height: ($breakpoint)) {
+    @content;
+  }
+}
+@mixin height-respond-between($lower, $upper) {
+  @media (min-height: $lower) and (max-height: $upper) {
+    @content;
+  }
+}

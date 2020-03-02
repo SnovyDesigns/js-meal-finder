@@ -1,0 +1,40 @@
+// ***** BASIC RESET *****
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// ----------------------------------------------
+
+// ***** GLOBAL DEFINITION OF 1rem *****
+html {
+  font-size: 62.5%; // ~10px
+}
+
+// ----------------------------------------------
+
+body {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+::selection {
+  background-color: blue;
+  color: white;
+}
