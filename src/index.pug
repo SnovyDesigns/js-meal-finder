@@ -8,14 +8,14 @@ html(lang="en")
     link(href=require("./favicon.ico"), rel='shortcut icon')
   body
     .container
-      h1.heading-primary
+      h1.heading-primary.title
         i.fas.fa-hat-chef
         | Meal Finder
       .search
         input.search__input(type="text", placeholder="Search for meals or keywords")
-        button.search__btn
+        button.btn.btn--search
           i.fas.fa-search
-        button.search__random
+        button.btn.btn--random
           i.fas.fa-random
     p.lead Search results for 'chicken'
     .meals
@@ -37,21 +37,23 @@ html(lang="en")
       a.meals__single(href="#meal")
         img(src=require("./img/meal.jpg"))
         h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-    .container
+    .container.container--wide
       #meal.meal
-        h2.meal__title.heading-secondary Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-        .meal__foto
-          img(src=require("./img/meal.jpg"))
-        .meal__type
-          i.fas.fa-utensils-alt
-          h3.heading-tertiary Chicken
-        .meal__country
-          i.fas.fa-globe-stand
-          h3.heading-tertiary Chicken
+        .meal__top
+          .meal__foto
+            img(src=require("./img/meal.jpg"))
+          .meal__info-wrapper
+            h2.meal__title.heading-secondary Honey Balsamic Chicken with Crispy Broccoli & Potatoes
+            .meal__info
+              i.fas.fa-utensils-alt
+              h3.heading-tertiary Chicken
+            .meal__info
+              i.fas.fa-globe-stand
+              h3.heading-tertiary Chicken
         .meal__ingredients
-          h3.heading-tertiary Ingredients
-          ul
-            li Garlic - 2 cloves chopped
+          p.lead Ingredients
+          ul.meal__ingredients-list
+            li.meal__ingredient Garlic - 2 cloves chopped
             li Garlic - 2 cloves chopped
             li Garlic - 2 cloves chopped
             li Garlic - 2 cloves chopped
