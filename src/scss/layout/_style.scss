@@ -11,21 +11,20 @@ body {
   padding-top: 8rem;
 }
 
-.container {
+%container {
   padding: 3rem 8rem;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
   @include brr(8px);
   width: 100%;
+}
+
+.container {
+  @extend %container;
   @include max-w(70rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &--wide {
-    @include max-w(80rem);
-    padding: 3rem;
-  }
 }
 
 .title {
@@ -55,6 +54,7 @@ body {
     padding: 0.5rem;
     font-size: 1.8rem;
     width: 100%;
+    color: $c-white;
 
     &::placeholder {
       color: rgba($color: $c-white, $alpha: 0.6);
@@ -107,6 +107,7 @@ body {
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
 
     &:hover {
       img {
@@ -128,7 +129,7 @@ body {
     width: 100%;
     text-align: center;
     @include absolute(top 50% left 50%);
-    transform: translate(-50%, 150%);
+    transform: translate(-50%, 250%);
     padding: 1rem;
     color: $c-white;
     @include trans;
@@ -136,6 +137,11 @@ body {
 }
 
 .meal {
+  @extend %container;
+  @include max-w(80rem);
+  padding: 3rem;
+  display: none;
+
   .svg-inline--fa {
     margin-right: 1rem;
     @include size(2.4);

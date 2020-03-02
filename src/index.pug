@@ -11,68 +11,15 @@ html(lang="en")
       h1.heading-primary.title
         i.fas.fa-hat-chef
         | Meal Finder
-      .search
-        input.search__input(type="text", placeholder="Search for meals or keywords")
-        button.btn.btn--search
+      form#submit.search
+        input#search.search__input(type="text", placeholder="Search for meals or keywords")
+        button.btn.btn--search(type="submit")
           i.fas.fa-search
-        button.btn.btn--random
+        button#random.btn.btn--random
           i.fas.fa-random
-    p.lead Search results for 'chicken'
-    .meals
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-      a.meals__single(href="#meal")
-        img(src=require("./img/meal.jpg"))
-        h2.meals__title.caption Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-    .container.container--wide
-      #meal.meal
-        .meal__top
-          .meal__foto
-            img(src=require("./img/meal.jpg"))
-          .meal__info-wrapper
-            h2.meal__title.heading-secondary Honey Balsamic Chicken with Crispy Broccoli & Potatoes
-            .meal__info
-              i.fas.fa-utensils-alt
-              h3.heading-tertiary Chicken
-            .meal__info
-              i.fas.fa-globe-stand
-              h3.heading-tertiary Chicken
-        .meal__ingredients
-          p.lead Ingredients
-          ul.meal__ingredients-list
-            li.meal__ingredient Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-            li Garlic - 2 cloves chopped
-        p.meal__body Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil accusamus praesentium perferendis laborum aut consectetur reiciendis fugiat aliquid alias repellendus corrupti eligendi, facilis neque iusto sequi voluptas voluptatem consequatur esse enim hic! Unde quidem libero non corporis modi possimus, sapiente omnis nisi praesentium, doloribus odit veniam beatae illum nemo ut, impedit suscipit? Ab natus veritatis laboriosam adipisci nobis reprehenderit consectetur cupiditate ratione in. Velit perferendis reprehenderit ullam voluptatum excepturi architecto cum dolorem eius quidem! Eos unde facilis hic aut voluptatem earum repellat ipsa. Error et aut ab perferendis est harum, impedit commodi, voluptatum, mollitia recusandae dicta! Nihil, enim eum?
+    p#result-heading.lead
+    #meals.meals
+    #single-meal.meal
+
 
 

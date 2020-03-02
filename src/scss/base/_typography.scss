@@ -27,6 +27,12 @@ body {
   color: $c-white;
   padding: 0 3rem 1rem;
   border-bottom: 1px solid rgba($color: $c-white, $alpha: 0.65);
+  opacity: 0;
+  @include trans;
+
+  &--show {
+    opacity: 1;
+  }
 }
 
 .caption {
