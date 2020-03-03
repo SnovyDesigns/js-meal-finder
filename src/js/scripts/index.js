@@ -65,7 +65,7 @@ function getRandomMeal(e) {
   single_mealEl.innerHTML = '';
   single_mealEl.style.display = 'none';
   mealsEl.innerHTML = '';
-  resultHeading.style.display = 'none';
+  resultHeading.style.opacity = 0;
 
   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(res => res.json())
@@ -158,8 +158,15 @@ random.addEventListener('click', getRandomMeal);
 
 mealsEl.addEventListener('click', e => {
   if (!e.target.closest('.meals__single')) return;
-  const meal = e.path.find(item => item.classList.contains('meals__single')),
-    mealID = meal.dataset.mealid;
+  let meal;
+  if (e.path) {
+    meal = e.path.find(item => item.classList.contains('meals__single'));
+  } else {
+    meal = e
+      .composedPath()
+      .find(item => item.classList.contains('meals__single'));
+  }
+  const mealID = meal.dataset.mealid;
   getMealById(mealID);
   gsap.to(window, { duration: 0.75, scrollTo: single_mealEl });
 });
