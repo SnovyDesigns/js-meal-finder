@@ -7,14 +7,15 @@ html(lang="en")
     title Meal Finder
     link(href=require("./favicon.ico"), rel='shortcut icon')
   body
-    .container
+    .container.top
       h1.heading-primary.title
         i.fas.fa-hat-chef
         | Meal Finder
-      form#submit.search
-        input#search.search__input(type="text", placeholder="Search for meals or keywords")
-        button.btn.btn--search(type="submit")
-          i.fas.fa-search
+      .search
+        form#submit.search__form
+          input#search.search__input(type="text", placeholder="Search for meals or keywords")
+          button.btn.btn--search(type="submit")
+            i.fas.fa-search
         button#random.btn.btn--random
           i.fas.fa-random
     p#result-heading.lead

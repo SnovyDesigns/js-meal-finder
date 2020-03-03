@@ -35,6 +35,6 @@ img {
 }
 
 ::selection {
-  background-color: blue;
+  background-color: rgba($color: $c-black, $alpha: 0.2);
   color: white;
 }

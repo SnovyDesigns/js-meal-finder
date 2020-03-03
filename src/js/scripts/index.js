@@ -1,3 +1,10 @@
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
+
+// ----------------------------------------------
+
 const search = document.getElementById('search'),
   submit = document.getElementById('submit'),
   random = document.getElementById('random'),
@@ -33,10 +40,10 @@ function searchMeal(e) {
             .map(
               meal =>
                 `
-          <a class="meals__single" href="#single-meal" data-mealid="${meal.idMeal}">
+          <div class="meals__single" data-mealid="${meal.idMeal}">
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
             <h2 class="meals__title caption">${meal.strMeal}</h2>
-          </a>
+          </div>
           `
             )
             .join('');
@@ -48,6 +55,24 @@ function searchMeal(e) {
   } else {
     showHeading('Please enter a search term!', true);
   }
+}
+
+// Fetch random meal from API
+function getRandomMeal(e) {
+  e.preventDefault();
+
+  // Clear meals and heading
+  single_mealEl.innerHTML = '';
+  single_mealEl.style.display = 'none';
+  mealsEl.innerHTML = '';
+  resultHeading.style.display = 'none';
+
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(res => res.json())
+    .then(data => {
+      const meal = data.meals[0];
+      addMealToDOM(meal);
+    });
 }
 
 // Fetch meal by ID
@@ -129,10 +154,12 @@ function showHeading(msg, hideHeading = false) {
 
 // Event listeners
 submit.addEventListener('submit', searchMeal);
+random.addEventListener('click', getRandomMeal);
 
 mealsEl.addEventListener('click', e => {
   if (!e.target.closest('.meals__single')) return;
   const meal = e.path.find(item => item.classList.contains('meals__single')),
     mealID = meal.dataset.mealid;
   getMealById(mealID);
+  gsap.to(window, { duration: 0.75, scrollTo: single_mealEl });
 });
